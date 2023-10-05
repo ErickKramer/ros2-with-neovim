@@ -1,0 +1,9 @@
+{
+  "co-author": {
+    "prefix": "rca",
+    "body": [
+      "Co-authored-by: ${1} <${1}@rethinkrobotics.com>",
+      "$0"
+    ]
+  }
+}

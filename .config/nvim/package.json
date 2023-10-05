@@ -1,0 +1,19 @@
+{
+  "name": "my_snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/python.json"
+      },
+      {
+        "language": "gitcommit",
+        "path": "./snippets/gitcommit.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./snippets/cpp.json"
+      }
+    ]
+  }
+}

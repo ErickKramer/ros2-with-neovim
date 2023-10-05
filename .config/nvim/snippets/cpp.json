@@ -1,0 +1,61 @@
+{
+  "header": {
+    "prefix": "header",
+    "body": [
+      "/****************************************************************************",
+      "* $TM_FILENAME",
+      "* Created on $CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE $CURRENT_YEAR",
+      "* Author: ${1:Author}",
+      "*",
+      "* Copyright $CURRENT_YEAR ${2:Company}. All Rights Reserved.",
+      "****************************************************************************/",
+      "$0"
+    ]
+  },
+  "rcinfo": {
+    "prefix": "RCL INFO",
+    "body": [
+      "RCLCPP_INFO(get_logger(${1}), ${2});"
+    ]
+  },
+  "rcinfos": {
+    "prefix": "RCL INFO STREAM",
+    "body": [
+      "RCLCPP_INFO_STREAM(get_logger(${1}), ${2});"
+    ]
+  },
+  "rcwarn": {
+    "prefix": "RCL WARN",
+    "body": [
+      "RCLCPP_WARN(get_logger(${1}), ${2});"
+    ]
+  },
+  "rcwarns": {
+    "prefix": "RCL WARN STREAM",
+    "body": [
+      "RCLCPP_WARN_STREAM(get_logger(${1}), ${2});"
+    ]
+  },
+  "rcerror": {
+    "prefix": "RCL ERROR",
+    "body": [
+      "RCLCPP_ERROR(get_logger(${1}), ${2});"
+    ]
+  },
+  "rcerrors": {
+    "prefix": "RCL ERROR STREAM",
+    "body": [
+      "RCLCPP_ERROR_STREAM(get_logger(${1}), ${2});"
+    ]
+  },
+  "#ifndef_full": {
+    "prefix": "#ifndef",
+    "body": [
+      "#ifndef ${1}",
+      "#define $1",
+      "$0",
+      "#endif  // $1"
+    ],
+    "description": "Code snippet for full ifndef"
+  }
+}

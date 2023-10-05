@@ -1,0 +1,23 @@
+# workspace
+compile_commands.json
+build/
+install/
+log/
+logs/
+node_modules/
+
+# vim
+*.swp
+*.swo
+
+# python
+__cache__
+__pycache__
+*.pyc
+*.ipynb
+
+# git
+.git/
+
+# C++
+.cache/

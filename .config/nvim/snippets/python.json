@@ -1,0 +1,68 @@
+{
+  "HEADER": {
+    "prefix": "header",
+    "body": [
+      "#!/usr/bin/env python3",
+      "# ****************************************************************************",
+      "# $TM_FILENAME",
+      "# Created on $CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE $CURRENT_YEAR",
+      "# Author:   ${1:Author}",
+      "#",
+      "# Copyright $CURRENT_YEAR ${2:Company}. All Rights Reserved.",
+      "# ****************************************************************************"
+    ],
+    "description" : "Header following Rethink Robotics style"
+  },
+  "ifmaintest": {
+    "prefix": "ifmt",
+    "body": [
+      "if __name__ == '__main__':",
+      "  pytest.main([__file__, '-v', '-s'])"
+    ],
+    "description": "Test"
+  },
+  "import_ipdb_breakpoint": {
+    "prefix": "iipb",
+    "body": [
+      "import ipdb",
+      "ipdb.set_trace()"
+    ],
+    "description": "Import ipdb and add a breakpoint for ipdb"
+  },
+  "ipdb_breakpoint": {
+    "prefix": "ipb",
+    "body": [
+      "ipdb.set_trace()"
+    ],
+    "description": "Add a breakpoint for ipdb"
+  },
+  "parser": {
+    "prefix": "parser",
+    "body": [
+      "parser = argparse.ArgumentParser(prog=__file__, description='${1}')",
+      "args,_ = parser.parse_known_args()"
+    ],
+    "description": "Default Argument Parser definition."
+  },
+  "parser_arg_default": {
+    "prefix": "parser_arg_default",
+    "body": [
+      "parser.add_argument('-${1}', '--${2}', type=${3}, default=${4}, help='${5}')"
+    ],
+    "description": "Default add argument to parser."
+  },
+  "parser_arg_true": {
+    "prefix": "parser_arg_true",
+    "body": [
+      "parser.add_argument('-${1}', '--${2}', action='store_true', default=False, help='${3}')"
+    ],
+    "description": "Add argument to parser that stores true."
+  },
+  "parser_arg_false": {
+    "prefix": "parser_arg_false",
+    "body": [
+      "parser.add_argument('-${1}', '--${2}', action='store_false', default=True, help='${3}')"
+    ],
+    "description": "Add argument to parser that stores true."
+  }
+}
