@@ -14,48 +14,88 @@
   },
   "rcinfo": {
     "prefix": "RCL INFO",
-    "body": [
-      "RCLCPP_INFO(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_INFO(get_logger(${1}), ${2});"]
   },
   "rcinfos": {
     "prefix": "RCL INFO STREAM",
-    "body": [
-      "RCLCPP_INFO_STREAM(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_INFO_STREAM(get_logger(${1}), ${2});"]
   },
   "rcwarn": {
     "prefix": "RCL WARN",
-    "body": [
-      "RCLCPP_WARN(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_WARN(get_logger(${1}), ${2});"]
   },
   "rcwarns": {
     "prefix": "RCL WARN STREAM",
-    "body": [
-      "RCLCPP_WARN_STREAM(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_WARN_STREAM(get_logger(${1}), ${2});"]
   },
   "rcerror": {
     "prefix": "RCL ERROR",
-    "body": [
-      "RCLCPP_ERROR(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_ERROR(get_logger(${1}), ${2});"]
   },
   "rcerrors": {
     "prefix": "RCL ERROR STREAM",
-    "body": [
-      "RCLCPP_ERROR_STREAM(get_logger(${1}), ${2});"
-    ]
+    "body": ["RCLCPP_ERROR_STREAM(get_logger(${1}), ${2});"]
   },
   "#ifndef_full": {
     "prefix": "#ifndef",
-    "body": [
-      "#ifndef ${1}",
-      "#define $1",
-      "$0",
-      "#endif  // $1"
-    ],
+    "body": ["#ifndef ${1}", "#define $1", "$0", "#endif  // $1"],
     "description": "Code snippet for full ifndef"
+  },
+  "decl_param": {
+    "prefix": "declare_parameter",
+    "body": ["declare_parameter<$1>(\"$2\", $3);"],
+    "description": "Declare RCLCPP Parameter"
+  },
+  "rcl_init": {
+    "prefix": "rclcpp node init",
+    "body": [
+      "rclcpp::init(argc, argv);",
+      "rclcpp::spin($1);",
+      "rclcpp::shutdown();"
+    ],
+    "description": "Add lines to initialize, spin and shutdown ROS 2 Node"
+  },
+  "rcl_publisher": {
+    "prefix": "rcl_publisher",
+    "body": [
+      "rclcpp::Publisher<$1>::SharedPtr $2;",
+      "$2 = create_publisher<$1>(\"$3\",1)"
+    ],
+    "description": "Declare a RCLCPP publisher"
+  },
+  "rcl_subscriber": {
+    "prefix": "rcl_subscriber",
+    "body": [
+      "rclcpp::Subscription<$1>::SharedPtr $2;",
+      "$2 = create_subscription<$1>(\"$3\",1, [&]($1::UniquePtr msg){$4(msg);});",
+      "void $4($1::UniquePtr msg) {}"
+    ],
+    "description": "Declare a RCLCPP subscription"
+  },
+  "rcl_timer": {
+    "prefix": "rcl_timer",
+    "body": [
+      "rclcpp::TimerBase::SharedPtr $1;",
+      "$1 = create_wall_timer($2, [&]() {$3();});",
+      "void $3(){}"
+    ],
+    "description": "Declare a RCLCPP timer"
+  },
+  "rcl_service_server": {
+    "prefix": "rcl_service_server",
+    "body": [
+      "rclcpp::Service<$1>::SharedPtr $2;",
+      "$2 = create_service<$1>(\"$3\",[&](const std::shared_ptr<$1::request>& request, std::sahred_ptr<$1::response> response) {$4(request, response);});",
+      "void $4(const std::shared_ptr<$1::request>& request, std::sahred_ptr<$1::response> response) {}"
+    ],
+    "description": "Declare a RCLCPP Service Server"
+  },
+  "rcl_service_client": {
+    "prefix": "rcl_service_client",
+    "body": [
+      "rclcpp::Client<$1>::SharedPtr $2;",
+      "$2 = create_client<$1>($3);"
+    ],
+    "description": "Declare a RCLCPP Service Client"
   }
 }
