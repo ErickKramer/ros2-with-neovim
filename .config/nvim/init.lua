@@ -124,7 +124,7 @@ require("lazy").setup({
 	{
 		"folke/todo-comments.nvim", -- Fancy TODOs/FIXMEs
 		dependencies = "nvim-lua/plenary.nvim",
-    opts = {}
+		opts = {},
 	},
 	{
 		"ggandor/leap.nvim", -- Improve navigation in file
@@ -150,7 +150,7 @@ require("lazy").setup({
 	},
 	{
 		"folke/which-key.nvim", -- Popup with possible keybindings of the command you started to type
-    opts = {}
+		opts = {},
 	},
 	{
 		"nvim-lualine/lualine.nvim", -- Fancier statusline
@@ -203,11 +203,11 @@ require("lazy").setup({
 	},
 	{
 		"numToStr/Comment.nvim", -- Comment stuff, everywhere
-    opts = {}
+		opts = {},
 	},
 	{
 		"nvim-pack/nvim-spectre", -- Advance Search and Replace
-    opts = {}
+		opts = {},
 	},
 	{
 		"goolord/alpha-nvim", -- Greeter dashboard
@@ -697,6 +697,12 @@ require("lazy").setup({
 
 				-- List of all DAP, Linter and Formatters to install
 				ensure_installed = {
+					-- LSPs
+					"clangd",
+					"lua_ls",
+					"pyright",
+					"ruff_lsp",
+
 					-- DAP
 					"codelldb",
 					"cpptools",
@@ -1065,8 +1071,13 @@ require("lazy").setup({
 			"mfussenegger/nvim-dap-python", -- Python debug adapter
 			"rcarriga/nvim-dap-ui", -- UI-like for debugging
 			"theHamsta/nvim-dap-virtual-text", -- Inline text during debugging
+			"nvim-neotest/nvim-nio", -- Needed by nvim-dap-ui
+			"folke/neodev.nvim", -- Recommended by nvim-dap-ui
 		},
 		config = function()
+			require("neodev").setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
 			-- PERF:
 			-- ===================================================
 			-- UI related configurations
