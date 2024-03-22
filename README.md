@@ -1,6 +1,6 @@
 # ROS 2 with Neovim
 
-Neovim setup to work with ROS 2 Humble in Ubuntu 22.04.
+Neovim setup to work with ROS 2 Humble in `Ubuntu 22.04`.
 
 This configuration can be used to develop ROS components in
 
@@ -19,7 +19,7 @@ The goal is that you use this repository and begin your Neovim configuration. Yo
 I have a provided a config script to speed up the process of configuring Neovim for you.
 This script with install all the dependencies, download a version of Neovim, and deploy the configuration files to the correct path.
 
-By default `./deploy.sh` will download Neovim version `v0.9.2`, which is the latest stable release, to `~/open_source/Neovim/`.
+By default `./deploy.sh` will download Neovim version `v0.9.5`, which is the latest stable release, to `~/open_source/neovim/`.
 
 You can change the version and path by calling the script with `./deploy --path <YOUR_PATH> --version <VERSION>`. NOTE: The version can be a branch or a tag from the Neovim repository.
 
@@ -34,6 +34,8 @@ You can check the plugins that are loaded in your Neovim configuration with `:La
 ![](./assets/lazy.png)
 
 ## ROS Related Configurations
+
+- Highlights for ROS 2 interfaces and Telescope integrations for common ROS 2 CLI using [nvim-ros2](https://github.com/ErickKramer/nvim-ros2)
 
 ### Colcon Commands
 
@@ -66,15 +68,12 @@ You can check the plugins that are loaded in your Neovim configuration with `:La
 
 #### LSP
 
-[Pyright](https://github.com/microsoft/pyright) is the LSP here configured
-
-#### Linters
-
-- [ruff](https://github.com/astral-sh/ruff): Requires a `pyproject.toml` config file
+- [Pyright](https://github.com/microsoft/pyright) is the LSP here configured
+- [ruff_lsp](https://github.com/astral-sh/ruff-lsp): Handles linting files exposing LSP diagnostics. This is configured using `pyproject.toml`
 
 #### Formatting
 
-- [black](https://github.com/psf/black): Requires a `pyproject.toml` config file
+- [ruff_format](https://docs.astral.sh/ruff/formatter/): Requires a `pyproject.toml` config file. This is the formatter used by default, if not found, black would be used.
 
 ## Use cases hints
 
@@ -104,7 +103,6 @@ You can check the plugins that are loaded in your Neovim configuration with `:La
 - Expand diagnostics `space + e`
 - Hover Documentation `K`
 - Switch between header and source `Shift + Tab`
-- Type definition `space + D`
 - Type definition `space + D`
 - Go to definition `gd`
 - Go to declaration `gD`

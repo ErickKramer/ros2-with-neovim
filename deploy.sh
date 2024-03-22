@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Default values
-NEOVIM_VERSION=v0.9.2
+NEOVIM_VERSION=v0.9.5
 NEOVIM_PATH=~/open_source/neovim/
 
 while [[ "${1}" ]]; do
@@ -61,6 +61,12 @@ sudo apt-get install -y clang \
     unzip
 
 pip3 install black debugpy ruff
+echo "========================================"
+echo "Installing lazygit"
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
 
 echo "========================================"
 #

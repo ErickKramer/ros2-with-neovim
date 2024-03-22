@@ -29,6 +29,7 @@ RUN apt-get update \
 RUN pip3 install \
   black \
   debugpy \
+  pynvim \
   ruff
 
 # Setup User
